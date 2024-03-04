@@ -1,0 +1,32 @@
+<html>
+<head>
+<title>AJAX Example</title>
+<script>
+function sendRequest() {
+var name = document.getElementById("name").value;
+var message = document.getElementById("message");
+if (name == "") {
+message.innerHTML = "Stranger, please tell me your name!";
+} else {
+var ob = new XMLHttpRequest();
+ob.open("GET", "cricket.php?name=" + name);
+ob.send();
+ob.onreadystatechange = function() {
+if (this.readyState == 4 && this.status == 200) {
+if (this.responseText == "Hello, master !") {
+message.innerHTML = "Hello, master !";
+} else {
+message.innerHTML = name + ", I don't know you!";
+}
+}
+};
+}
+}
+</script>
+</head>
+<body>
+<h1>AJAX Example</h1>
+<input type="text" id="name" onkeyup="sendRequest()">
+<p id="message"></p>
+</body>
+</html>

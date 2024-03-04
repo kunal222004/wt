@@ -1,0 +1,32 @@
+<html>
+<head>
+<script type="text/javascript" >
+function print(str)
+{
+var ob=false;
+ob=new XMLHttpRequest();
+ob.open("GET","book.php?q="+str);//emailid="+eid);
+ob.send();
+ob.onreadystatechange=function()
+
+{
+if(ob.readyState==4 && ob.status==200)
+{
+document.getElementById("i").innerHTML=ob.responseText;
+}
+}
+}
+</script>
+</head>
+<body>
+<form>
+List of book titles:
+<select name="Book_Title" onChange="print(this.value)">
+<option value="Networking"> Networking</option>
+<option value="php"> PHP</option>
+<option value="java">JAVA</option>
+</select>
+</form>
+<div id="i">Book details will be given here</div>
+</body>
+</html>

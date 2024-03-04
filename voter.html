@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Voter Registration</title>
+    <script>
+        function validateForm() {
+            var name = document.getElementById("name").value.toUpperCase();
+            var age = document.getElementById("age").value;
+            var nationality = document.getElementById("nationality").value.toUpperCase();
+            
+            // Basic validation checks
+            if (name === "" || age === "" || nationality === "") {
+                alert("All fields are required");
+                return false;
+            }
+            if (!/^[A-Z]+$/.test(name)) {
+                alert("Name should be in uppercase letters only");
+                return false;
+            }
+            if (isNaN(age) || age < 18) {
+                alert("Age should be a number and at least 18");
+                return false;
+            }
+            if (nationality !== "INDIAN") {
+                alert("Nationality should be Indian");
+                return false;
+            }
+
+            // If all validations pass, proceed with AJAX request
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    alert(this.responseText);
+                
+                    document.getElementById("registrationForm").reset(); // Reset form after successful registration
+
+                }
+            };
+            xhttp.open("POST", "voter.php", true);
+            xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+            xhttp.send("name=" + name + "&age=" + age + "&nationality=" + nationality);
+        }
+    </script>
+</head>
+<body>
+    <h1>Voter Registration</h1>
+    <form id="registrationForm">
+        <label for="name">Name (Uppercase only):</label><br>
+        <input type="text" id="name" name="name"><br>
+        <label for="age">Age:</label><br>
+        <input type="text" id="age" name="age"><br>
+        <label for="nationality">Nationality:</label><br>
+        <input type="text" id="nationality" name="nationality"><br><br>
+        <button type="button" onclick="validateForm()">Register</button>
+    </form>
+</body>
+</html>
