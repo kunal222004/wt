@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Books!</title>
+<style>
+  /* Common CSS styles */
+  ul {
+      list-style-type: none;
+      margin: 0;
+      padding: 0;
+      overflow: hidden;
+      background-color: lightgray;
+  }
+  li {
+      float: left;
+  }
+  li a {
+      display: block;
+      color: black;
+      font-size: 20px;
+      padding: 10px 20px;
+      text-decoration: none;
+  }
+  li a:hover {
+      background-color: white;
+      color: black;
+  }
+  .active {
+      background-color: grey;
+      color: black;
+  }
+  body {
+      font-family: Arial, sans-serif;
+      margin: 20px;
+  }
+  header {
+      text-align: center;
+      padding: 5px;
+      color: white;
+      background-color: black;
+  }
+  h1 {
+      color: white;
+  }
+  .books-container {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-around;
+  }
+  .books {
+      width: 300px;
+      margin: 20px;
+      color: black;
+  }
+  footer {
+      text-align: center;
+      padding: 10px;
+      background-color: #333;
+      color: #fff;
+      position: fixed;
+      bottom: 0;
+      width: 100%;
+  }
+  /* Additional styles for input fields */
+  .input-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    margin-bottom: 10px;
+  }
+  .input-container input {
+    width: 48%;
+  }
+</style>
+</head>
+<body>
+  <form action="books.php" method="post">
+  <header>
+    <h1>Books...!</h1>
+  </header>
+  <ul id="menu">
+    <li><a class="active" href="home1.html">Home</a></li>
+    <li><a href="#" id="addBook">Add Book</a></li>
+    <li><a href="#" id="removeBook">Remove Book</a></li>
+    <li><a href="lout.php">Logout</a></li> 
+  </ul>
+
+  <div class="books-container" id="booksContainer">
+    <!-- Existing books here -->
+  </div>
+
+  <footer class="footer">
+    &copy; kvn student developed <span> designer </span> | all rights reserved!
+  </footer>
+
+  <!-- Add Book Form -->
+  <div id="addBookForm" style="display: none;">
+    <h2>Add New Book</h2>
+    <div class="input-container">
+      <input type="text" id="bookTitle" placeholder="Book Title">
+      <input type="text" id="bookURL" placeholder="Book URL">
+    </div>
+    <div class="input-container">
+      <input type="text" id="bookDescription" placeholder="Book Description">
+      <input type="file" id="bookImage" accept="image/*" required>
+    </div>
+    <button onclick="addBook()">Add Book</button>
+  </div>
+
+  <script>
+    // JavaScript code to handle adding and removing books
+
+    // Function to toggle display of add book form
+    document.getElementById('addBook').addEventListener('click', function() {
+      document.getElementById('addBookForm').style.display = 'block';
+    });
+
+    // Function to add a book
+    function addBook() {
+      const booksContainer = document.getElementById('booksContainer');
+
+      // Retrieve input values
+      const bookTitle = document.getElementById('bookTitle').value;
+      const bookURL = document.getElementById('bookURL').value;
+      const bookDescription = document.getElementById('bookDescription').value;
+      const bookImageFile = document.getElementById('bookImage').files[0]; // Get the selected file
+
+      // Create book element
+      const newBookDiv = document.createElement('div');
+      newBookDiv.className = 'books';
+      newBookDiv.innerHTML = `
+          <h2>${bookTitle}</h2>
+          <p>${bookDescription}</p>
+          <a href="${bookURL}" alt="${bookTitle}">
+              <img src="${URL.createObjectURL(bookImageFile)}" alt="${bookTitle}" style="max-width: 100%;">
+          </a>
+      `;
+
+      // Append book element to books container
+      booksContainer.appendChild(newBookDiv);
+
+      // Hide add book form after adding book
+      document.getElementById('addBookForm').style.display = 'none';
+    }
+  </script>
+</form>
+</body>
+</html>

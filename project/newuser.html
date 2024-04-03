@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>User Registration</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background-image: url('images/registration.jpeg'); /* Replace 'background.jpg' with your image file */
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+  }
+  
+  nav {
+      background-color: rgba(0, 0, 0, 0.5); /* Adding some transparency to the navigation bar */
+  }
+  
+  nav ul {
+      list-style-type: none;
+      margin: 0;
+      padding: 0;
+      overflow: hidden;
+  }
+  
+  nav ul li {
+      float: left;
+  }
+  
+  nav ul li a {
+      display: block;
+      color: white;
+      text-align: center;
+      padding: 14px 16px;
+      text-decoration: none;
+  }
+  
+  nav ul li a:hover {
+      background-color: rgba(0, 0, 0, 0.7); /* Darkening the background on hover */
+  }
+  
+  nav ul li a.active {
+      background-color: #4CAF50;
+  }
+  
+  .content {
+      padding: 20px;
+  }
+  
+  h1 {
+      color: #fff; /* Changing text color to white for better contrast */
+  }
+  
+  p {
+      color: #f2f2f2; /* Changing text color to a lighter shade of white */
+  }
+  
+
+    ul{
+      list-style-type: none;
+      margin: 0;
+      padding: 0;
+      overflow: hidden;
+      background-color: rgb(89, 86, 86);
+  }
+  li{
+      float:left
+  }
+  li a{
+      display:block;
+      color: black;
+    font-size: 20px;
+    padding: 10px 20px;
+    text-decoration: none;
+  }
+  .active{
+      background-color: orange;
+      color: black;
+  }
+  li a hover{
+      background-color: white;
+      color: black;
+  }
+
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f4f4f4;
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    header {
+      background-color: #333;
+      color: #fff;
+      text-align: center;
+      padding: 0.3em;
+    }
+
+    main {
+      max-width: 800px;
+      margin: 20px auto;
+      padding: 20px;
+      background-color: #fff;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      border-radius: 5px;
+    }
+
+    h1, h2 {
+      color: #fcf5f5;
+    }
+
+    form {
+      margin-top: 20px;
+    }
+
+    label {
+      display: block;
+      margin-bottom: 8px;
+    }
+
+    input {
+      width: 100%;
+      padding: 8px;
+      margin-bottom: 16px;
+      box-sizing: border-box;
+    }
+
+    input[type="submit"] {
+      background-color: #333;
+      color: #fff;
+      cursor: pointer;
+    }
+
+    footer {
+      text-align: center;
+      padding: 10px;
+      background-color: #333;
+      color: #fff;
+      position: fixed;
+      bottom: 0;
+      width: 100%;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>User Registration</h1>
+  </header>
+  <ul><li><a class="active" href="home1.html">
+    Home</a></li>
+<li><a href="l.php"> Login</a></li>
+<li><a href="newuser.html"> New Registration</a></li>
+<li><a href="profile.php"> Profile</a></li>
+<li><a href="lout.php">Logout</a></li>
+</ul>
+<br><br>
+  <main>
+    <form action="newuser.php" method="post">
+      <label for="username">Username:</label>
+      <input type="text" id="username" name="username" required>
+
+      <label for="email">Email:</label>
+      <input type="email" id="email" name="email" required>
+
+      <label for="password">Password:</label>
+      <input type="password" id="password" name="password" required>
+
+      <input type="submit" value="Register">
+    </form>
+  </main>
+
+  <footer>
+    &copy; kvn student developed <span> designer </span> | all rights reserved!
+  </footer>
+</body>
+</html>

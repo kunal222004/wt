@@ -1,0 +1,51 @@
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background-image: url('images/bg.jpeg'); /* Replace 'background.jpg' with your image file */
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+nav {
+    background-color: rgba(0, 0, 0, 0.5); /* Adding some transparency to the navigation bar */
+}
+
+nav ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+}
+
+nav ul li {
+    float: left;
+}
+
+nav ul li a {
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+
+nav ul li a:hover {
+    background-color: rgba(0, 0, 0, 0.7); /* Darkening the background on hover */
+}
+
+nav ul li a.active {
+    background-color: #4CAF50;
+}
+
+.content {
+    padding: 20px;
+}
+
+h1 {
+    color: #fff; /* Changing text color to white for better contrast */
+}
+
+p {
+    color: #f2f2f2; /* Changing text color to a lighter shade of white */
+}

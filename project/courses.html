@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Courses</title>
+    <!-- Include Tailwind CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <style>
+        /* Additional styling */
+        .video-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 1rem;
+            padding: 1rem;
+        }
+
+        .video {
+            border: 1px solid #ccc;
+            padding: 1rem;
+        }
+    </style>
+</head>
+<form class="bg-gray-100">
+    <form action="courses.php" method="post"></form>
+    <header class="bg-gray-800 text-white py-4">
+        <h1 class="text-center">Available Courses</h1>
+    </header>
+    <nav class="bg-gray-200 py-4">
+        <a href="home1.html" class="px-4 py-2 block text-gray-800 hover:bg-gray-300">Home</a>
+        <a href="logout.php" class="px-4 py-2 block text-gray-800 hover:bg-gray-300">Logout</a>
+        <a href="books.html" class="px-4 py-2 block text-gray-800 hover:bg-gray-300">Library</a>
+        <a href="profile.php" class="px-4 py-2 block text-gray-800 hover:bg-gray-300">Profile</a>
+    </nav>
+
+    <div class="video-container" id="video-container">
+        <!-- Videos will be loaded dynamically here -->
+    </div>
+
+    <main class="container mx-auto py-8">
+        <section class="course-list">
+            <h2 class="text-lg font-bold mb-4">Add New Course</h2>
+            <form id="add-course-form">
+                <input type="text" id="course-title" placeholder="Enter course title" required class="border border-gray-300 rounded-md px-4 py-2 mb-2">
+                <input type="text" id="video-url" placeholder="Enter video URL" required class="border border-gray-300 rounded-md px-4 py-2 mb-2">
+                <button type="submit" class="bg-blue-500 text-white px-4 py-2 rounded-md hover:bg-blue-600">Add Course</button>
+            </form>
+        </section>
+    </main>
+
+    <footer class="bg-gray-800 text-white py-4 text-center">
+        &copy; kvn student developed <span> designer </span> | all rights reserved!
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            // Load initial courses
+            loadCourses();
+
+            // Add event listener for the add course form
+            document.getElementById('add-course-form').addEventListener('submit', function (event) {
+                event.preventDefault();
+                const courseTitle = document.getElementById('course-title').value;
+                const videoUrl = document.getElementById('video-url').value;
+                addCourse(courseTitle, videoUrl);
+            });
+        });
+
+        // Function to load courses
+        function loadCourses() {
+            // This part should be handled by PHP fetching data from the database
+            // Sample data is provided here for demonstration
+            const courses = [
+                { title: 'Video 1: Introduction', url: 'https://www.youtube.com/embed/VIDEO_ID_1' },
+                { title: 'Video 2: Web development', url: 'https://www.youtube.com/embed/VIDEO_ID_2' },
+                { title: 'Video 3: Java', url: 'https://www.youtube.com/embed/VIDEO_ID_3' }
+                // Add more courses as needed
+            ];
+        
+            courses.forEach(course => {
+                addCourseToUI(course.title, course.url);
+            });
+        }
+
+        // Function to add a new course
+        function addCourse(title, url) {
+            addCourseToUI(title, url);
+            // Send data to the PHP script for database insertion
+            fetch('add_course.php', {
+                method: 'POST',
+                body: JSON.stringify({ title: title, video_url: url }),
+                headers: {
+                    'Content-Type': 'application/json'
+                }
+            });
+        }
+
+        // Function to add a course to the UI
+        function addCourseToUI(title, url) {
+            const videoContainer = document.getElementById('video-container');
+            const div = document.createElement('div');
+            div.className = 'video';
+            div.innerHTML = `
+                <h2>${title}</h2>
+                <iframe width="100%" height="200" src="${url}" frameborder="0" allowfullscreen></iframe>
+                <button onclick="updateCourse('${title}')">Update</button>
+                <button onclick="removeCourse('${title}')">Remove</button>
+            `;
+            videoContainer.appendChild(div);
+        }
+
+        // Function to remove a course
+        function removeCourse(title) {
+            const confirmation = confirm('Are you sure you want to remove this course?');
+            if (confirmation) {
+                // Remove the course from the UI
+                const courseElement = document.querySelector(`.video h2:nth-of-type(${title})`).parentNode;
+                courseElement.remove();
+                // Send data to the PHP script for database deletion
+                fetch('remove_course.php', {
+                    method: 'POST',
+                    body: JSON.stringify({ title: title }),
+                    headers: {
+                        'Content-Type': 'application/json'
+                    }
+                });
+            }
+        }
+
+        // Function to update a course
+        function updateCourse(title) {
+            const newTitle = prompt('Enter new title:');
+            if (newTitle) {
+                // Update the UI
+                const courseElement = document.querySelector(`.video h2:nth-of-type(${title})`);
+                courseElement.textContent = newTitle;
+                // Send data to the PHP script for database update
+                fetch('update_course.php', {
+                    method: 'POST',
+                    body: JSON.stringify({ title: title, new_title: newTitle }),
+                    headers: {
+                        'Content-Type': 'application/json'
+                    }
+                });
+            }
+        }
+    </script>
+    </form>
+</body>
+</html>

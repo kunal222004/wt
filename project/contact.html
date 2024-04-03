@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact Us</title>
+  <style>
+    
+      ul{
+          list-style-type: none;
+          margin: 0;
+          padding: 0;
+          overflow: hidden;
+          background-color: rgb(89, 86, 86);
+      }
+      li{
+          float:left
+      }
+      li a{
+          display:block;
+          color: black;
+        font-size: 20px;
+        padding: 10px 20px;
+        text-decoration: none;
+      }
+      .active{
+          background-color: orange;
+          color: black;
+      }
+      li a hover{
+          background-color: white;
+          color: black;
+      }
+    
+
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f4f4f4;
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    header {
+      background-color: #333;
+      color: #fff;
+      text-align: center;
+      padding: 0.1em;
+    }
+
+    main {
+      max-width: 800px;
+      margin: 20px auto;
+      padding: 20px;
+      background-color: #fff;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      border-radius: 5px;
+    }
+
+    h1 {
+      color: #f0eeee;
+    }
+    h2{
+      color: black;
+    }
+
+    section {
+      margin-top: 20px;
+    }
+
+    .contact-details {
+      margin-bottom: 20px;
+    }
+
+    .message-box {
+      border: 1px solid #ddd;
+      padding: 10px;
+      border-radius: 5px;
+      background-color: #f9f9f9;
+    }
+
+    form {
+      margin-top: 20px;
+    }
+
+    label {
+      display: block;
+      margin-bottom: 8px;
+    }
+
+    input, textarea {
+      width: 100%;
+      padding: 8px;
+      margin-bottom: 16px;
+      box-sizing: border-box;
+    }
+
+    input[type="submit"] {
+      background-color: #333;
+      color: #fff;
+      cursor: pointer;
+    }
+
+    footer {
+      text-align: center;
+      padding: 10px;
+      background-color: #333;
+      color: #fff;
+      position: fixed;
+      bottom: 0;
+      width: 100%;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Contact Us</h1>
+  </header>
+  <ul><li><a class="active" href="home1.html">
+    Home</a></li>
+<li><a href="l.php"> Login</a></li>
+<li><a href="newuser.html"> New Registration</a></li>
+<li><a href="profile.php"> Profile</a></li>
+<li><a href="lout.php">Logout</a></li>
+</ul>
+  <main>
+    <section class="contact-details">
+      <h2>Contact Details</h2>
+      <p>Email: tthakare67@gmail.com<br>Phone: (705) 863-8277</p>
+    </section>
+
+    <section class="message-box">
+      <h2>Send us a Message</h2>
+      <form action="contact.php" method="post">
+        <label for="name">Your Name:</label>
+        <input type="text" id="name" name="name" required>
+
+        <label for="email">Your Email:</label>
+        <input type="email" id="email" name="email" required>
+
+        <label for="message">Message:</label>
+        <textarea id="message" name="message" rows="4" required></textarea>
+
+        <input type="submit" value="Submit">
+      </form>
+    </section>
+  </main>
+
+  <footer class="footer">
+
+    &copy; kvn student developed <span> designer </span> | all rights reserved!
+ 
+ 
+ </footer>
+</body>
+</html>
